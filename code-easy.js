@@ -1,44 +1,50 @@
-// oblast definice funkcí
-
 // 1) Funkce co vrací boolean hodnotu zda arrayInput, obsahuje v sobě stringToFind
-function contains(arrayInput, stringToFind) {}
+function contains(arrayInput, stringToFind) {
+  return arrayInput.includes(stringToFind);
+}
 
 // 2) Funkce co vrací délku string řetězce poskytnutého ve stringInput
-function size(stringInput) {}
+function size(stringInput) {
+  return stringInput.length;
+}
 
 // 3) Funkce co vrací bool hodnotu co je AND mezi booleanInput1 a booleanInput2
-function andMe(booleanInput1, booleanInput2) {}
+function andMe(booleanInput1, booleanInput2) {
+  return booleanInput1 && booleanInput2;
+}
 
 // 4) Funkce co spojí (bez žádného přidaného znaku) dva textové řetězce string1 a string2 a vrátí je jako jeden string
-// například pro "Hello", "World" bude výsledek "HelloWorld"
-function join(string1, string2) {}
+function join(string1, string2) {
+  return string1 + string2;
+}
 
 // 5) Funkce co vrací hodnotu z pole arrayInput na indexu indexInput (od 0)
-// například pro ["apple", "banana", "kiwi", "orange", "strawberry"], 2 bude výsledek "kiwi"
-function get(arrayInput, indexInput) {}
+function get(arrayInput, indexInput) {
+  return arrayInput[indexInput];
+}
 
 // oblast volání funkcí
 const fruits = ["apple", "banana", "kiwi", "orange", "strawberry"];
 
 // 1)
 const result1 = contains(fruits, "banana");
-console.log(result1);
+console.log(result1); // true
 
 // 2)
 const result2 = size("I love learning!");
-console.log(result2);
+console.log(result2); // 17
 
 // 3)
 const result3 = andMe(true, false);
-console.log(result3);
+console.log(result3); // false
 
 // 4)
 const result4 = join("Hello", "World");
-console.log(result4);
+console.log(result4); // "HelloWorld"
 
 // 5)
 const result5 = get(fruits, 2);
-console.log(result5);
+console.log(result5); // "kiwi"
 
 // do kódu níže nezasahujte
 
