@@ -1,33 +1,59 @@
-// oblast definice funkcí
+// 1) Funkce pro vrácení slova na dané pozici v malých písmenech
+function lowercaseWord(stringInput, wordIndex = 1) {
+  // Rozdělíme string na pole slov
+  const words = stringInput.split(' ');
 
-// 1) Funkce co vrací string, který odpovídá slovu (jsou oddělena mezerou) ze stringInput na pozici dané wordIndex (od 1), pokud index není vyplněn pracuje se s prvním slovem, vrácené slovo bude pouze malými písmeny, pokud slovo na dané pozici neexistuje, vrátí se prázdný string
-// například pro "My Cat Is Yellow?" a 3 bude výsledek "is"
-function lowercaseWord(stringInput, wordIndex) {}
+  // Ověříme, jestli je index v platném rozsahu
+  if (wordIndex < 1 || wordIndex > words.length) {
+    return ''; // Pokud není validní index, vrátíme prázdný string
+  }
 
-// 2) Funkce co přijme testScore, a vrátí odpovídající známku podle následující tabulky:
-// 0-64 -> F, 65-78 -> E, 79-86 -> D, 87-92 -> C, 93-98 -> B, 99-100 -> A, pokud je testScore mimo rozsah 0-100, nebo nevalidní hodnota funkce vrátí "INVALID SCORE"
-// například pro 75 bude výsledek "E"
-function transformScoreToGrade(testScore) {}
+  // Vrátíme slovo na požadované pozici v malých písmenech
+  return words[wordIndex - 1].toLowerCase();
+}
 
-// 3) Funkce na výpočet factorialu, pomocí cyklu, vstupem je factorialNumber, výstupem bude výsledek faktoriálu
-// nevalidní vstupem je záporné číslo, nebo nečíslo, v takovém případě funkce vrátí undefined
-// faktoriál je součin všech kladných celých čísel menších nebo rovných zadanému číslu; pozor faktoriál čísla 0 je 1
-// například pro 5 bude výsledek 120; vzorec: 5! = 5 * 4 * 3 * 2 * 1 = 120
-function factorial(factorialNumber) {}
+// 2) Funkce pro převod skóre na známku
+function transformScoreToGrade(testScore) {
+  if (typeof testScore !== 'number' || testScore < 0 || testScore > 100) {
+    return "INVALID SCORE"; // Pokud je skóre mimo rozsah nebo nevalidní, vracíme "INVALID SCORE"
+  }
+  
+  if (testScore >= 0 && testScore <= 64) return 'F';
+  if (testScore >= 65 && testScore <= 78) return 'E';
+  if (testScore >= 79 && testScore <= 86) return 'D';
+  if (testScore >= 87 && testScore <= 92) return 'C';
+  if (testScore >= 93 && testScore <= 98) return 'B';
+  if (testScore >= 99 && testScore <= 100) return 'A';
+}
+
+// 3) Funkce pro výpočet faktoriálu pomocí cyklu
+function factorial(factorialNumber) {
+  if (typeof factorialNumber !== 'number' || factorialNumber < 0) {
+    return undefined; // Pokud je vstup nevalidní, vracíme undefined
+  }
+
+  let result = 1;
+  for (let i = 1; i <= factorialNumber; i++) {
+    result *= i; // Vynásobíme číslo s aktuálním součtem
+  }
+
+  return result;
+}
 
 // oblast volání funkcí
 
 // 1)
-const result1 = capitalizeWord("My Cat Is Yellow?", 3);
-console.log(result1);
+const result1 = lowercaseWord("My Cat Is Yellow?", 3);
+console.log(result1); // "is"
 
 // 2)
 const result2 = transformScoreToGrade(75);
-console.log(result2);
+console.log(result2); // "E"
 
 // 3)
 const result3 = factorial(5);
-console.log(result3);
+console.log(result3); // 120
+
 
 // do kódu níže nezasahujte
 
